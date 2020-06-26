@@ -5,21 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.android.volley.*
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_crud.*
-import org.json.JSONException
 import org.json.JSONObject
 
 class CRUD : AppCompatActivity() {
   var id : String = ""
   var name : String = ""
-  var hasil : String = ""
-  var jsondata : String = ""
-  var data : String = ""
-  var jObject = JSONObject()
-
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -68,6 +61,5 @@ class CRUD : AppCompatActivity() {
       }
     }
     queue.add(stringRequest)
-
   }
 }
