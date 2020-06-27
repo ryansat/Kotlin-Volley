@@ -62,4 +62,67 @@ class CRUD : AppCompatActivity() {
     }
     queue.add(stringRequest)
   }
+
+  public fun btnEdit (v : View)
+  {
+    id =  editText.text.toString()
+    name = editText2.text.toString()
+    val url = "http://10.0.2.2/maps/update.php"
+    textView.text = ""
+    val queue = Volley.newRequestQueue(this)
+    val stringRequest = object : StringRequest(Method.POST,url,Response.Listener<String>{
+        response ->
+      try {
+        textView3.text = response
+      }catch (e: Exception){
+        e.printStackTrace()
+      }
+
+    }, object : Response.ErrorListener{
+      override fun onErrorResponse(volleyError: VolleyError) {
+        Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+      }
+    }){
+      @Throws(AuthFailureError::class)
+      override fun getParams(): Map<String, String> {
+        val params = HashMap<String, String>()
+        params.put("id", id)
+        params.put("name", name)
+        return params
+      }
+    }
+    queue.add(stringRequest)
+  }
+
+  public fun btnHapus (v : View)
+  {
+    id =  editText.text.toString()
+    name = editText2.text.toString()
+    val url = "http://10.0.2.2/maps/hapus.php"
+    textView.text = ""
+    val queue = Volley.newRequestQueue(this)
+    val stringRequest = object : StringRequest(Method.POST,url,Response.Listener<String>{
+        response ->
+      try {
+        textView3.text = response
+      }catch (e: Exception){
+        e.printStackTrace()
+      }
+
+    }, object : Response.ErrorListener{
+      override fun onErrorResponse(volleyError: VolleyError) {
+        Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+      }
+    }){
+      @Throws(AuthFailureError::class)
+      override fun getParams(): Map<String, String> {
+        val params = HashMap<String, String>()
+        params.put("id", id)
+        params.put("name", name)
+        return params
+      }
+    }
+    queue.add(stringRequest)
+  }
+
 }
