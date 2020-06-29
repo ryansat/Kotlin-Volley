@@ -24,7 +24,7 @@ class CRUD : AppCompatActivity() {
     try {
       editText.setText(intent.getStringExtra("ID"))
       editText2.setText(intent.getStringExtra("Name"))
-      Toast.makeText(getApplicationContext(),""+intent.getStringExtra("Name"), Toast.LENGTH_SHORT).show()
+      //Toast.makeText(getApplicationContext(),""+intent.getStringExtra("Name"), Toast.LENGTH_SHORT).show()
     }
     catch (ex : Exception){
       Toast.makeText(getApplicationContext(),""+ex, Toast.LENGTH_SHORT).show()
@@ -36,15 +36,15 @@ class CRUD : AppCompatActivity() {
   {
     id =  editText.text.toString()
     name = editText2.text.toString()
-    val url = "http://10.0.2.2/maps/tambah.php"
-    textView.text = ""
+    val url = "https://satriaworld.xyz/api/bean/testcrud/tambah.php"
     val queue = Volley.newRequestQueue(this)
     val stringRequest = object : StringRequest(Method.POST,url,Response.Listener<String>{
         response ->
       try {
-        textView3.text = response
+        Toast.makeText(getApplicationContext(),"SUCCESS", Toast.LENGTH_SHORT).show()
       }catch (e: Exception){
         e.printStackTrace()
+        Toast.makeText(getApplicationContext(),"FAILED", Toast.LENGTH_SHORT).show()
       }
 
     }, object : Response.ErrorListener{
@@ -67,15 +67,15 @@ class CRUD : AppCompatActivity() {
   {
     id =  editText.text.toString()
     name = editText2.text.toString()
-    val url = "http://10.0.2.2/maps/update.php"
-    textView.text = ""
+    val url = "https://satriaworld.xyz/api/bean/testcrud/update.php"
     val queue = Volley.newRequestQueue(this)
     val stringRequest = object : StringRequest(Method.POST,url,Response.Listener<String>{
         response ->
       try {
-        textView3.text = response
+        Toast.makeText(getApplicationContext(),"SUCCESS", Toast.LENGTH_SHORT).show()
       }catch (e: Exception){
         e.printStackTrace()
+        Toast.makeText(getApplicationContext(),"FAILED", Toast.LENGTH_SHORT).show()
       }
 
     }, object : Response.ErrorListener{
@@ -98,15 +98,15 @@ class CRUD : AppCompatActivity() {
   {
     id =  editText.text.toString()
     name = editText2.text.toString()
-    val url = "http://10.0.2.2/maps/hapus.php"
-    textView.text = ""
+    val url = "https://satriaworld.xyz/api/bean/testcrud/hapus.php"
     val queue = Volley.newRequestQueue(this)
     val stringRequest = object : StringRequest(Method.POST,url,Response.Listener<String>{
         response ->
       try {
-        textView3.text = response
+        Toast.makeText(getApplicationContext(),"SUCCESS", Toast.LENGTH_SHORT).show()
       }catch (e: Exception){
         e.printStackTrace()
+        Toast.makeText(getApplicationContext(),"FAILED", Toast.LENGTH_SHORT).show()
       }
 
     }, object : Response.ErrorListener{

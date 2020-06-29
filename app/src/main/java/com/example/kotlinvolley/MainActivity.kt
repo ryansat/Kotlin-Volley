@@ -1,6 +1,8 @@
 package com.example.kotlinvolley
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -27,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun jsonParse() {
-        val url ="http://10.0.2.2/maps/tampil.php"
+        val url ="https://satriaworld.xyz/api/bean/testcrud/user.php"
         val request = JsonObjectRequest(Request.Method.GET, url, null, Response.Listener {
             response ->try {
-            val jsonArray = response.getJSONArray("user")
+            val jsonArray = response.getJSONArray("name")
             for (i in 0 until jsonArray.length()) {
                 val employee = jsonArray.getJSONObject(i)
                 val id = employee.getString("id")
@@ -44,5 +46,10 @@ class MainActivity : AppCompatActivity() {
             error -> error.printStackTrace()
         })
         requestQueue?.add(request)
+    }
+
+    public fun move_activity(veiw : View) {
+        val intent = Intent(this, CRUD::class.java)
+        startActivity(intent)
     }
 }
