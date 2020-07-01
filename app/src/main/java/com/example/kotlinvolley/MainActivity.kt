@@ -21,35 +21,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         title = "KotlinApp"
-        textView = findViewById(R.id.textViewResult)
-        val button: Button = findViewById(R.id.btnParse)
+        val button = findViewById(R.id.btnParse) as Button
+        val crudData = findViewById(R.id.crudData) as Button
         requestQueue = Volley.newRequestQueue(this)
+
         button.setOnClickListener {
-            jsonParse()
+            val intent = Intent(this, ShowData::class.java)
+            startActivity(intent)
         }
-    }
-    private fun jsonParse() {
-        val url ="https://satriaworld.xyz/api/bean/testcrud/user.php"
-        val request = JsonObjectRequest(Request.Method.GET, url, null, Response.Listener {
-            response ->try {
-            val jsonArray = response.getJSONArray("name")
-            for (i in 0 until jsonArray.length()) {
-                val employee = jsonArray.getJSONObject(i)
-                val id = employee.getString("id")
-                val name = employee.getString("name")
-                textView.append("$id, $name\n\n")
-            }
-        } catch (e: JSONException) {
-            e.printStackTrace()
+
+        crudData.setOnClickListener {
+            val intent = Intent(this, CRUD::class.java)
+            startActivity(intent)
         }
-        }, Response.ErrorListener {
-            error -> error.printStackTrace()
-        })
-        requestQueue?.add(request)
     }
 
-    public fun move_activity(veiw : View) {
-        val intent = Intent(this, CRUD::class.java)
-        startActivity(intent)
-    }
 }
