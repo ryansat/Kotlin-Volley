@@ -2,14 +2,12 @@ package com.example.kotlinvolley
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.android.volley.*
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_crud.*
-import org.json.JSONObject
 
 class CRUD : AppCompatActivity() {
   var id : String = ""
